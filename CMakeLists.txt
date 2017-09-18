@@ -81,7 +81,7 @@ else()
   add_cxx_compiler_flag(-Wfloat-equal)
   add_cxx_compiler_flag(-fstrict-aliasing)
   if (NOT BENCHMARK_USE_LIBCXX)
-    add_cxx_compiler_flag(-Wzero-as-null-pointer-constant)
+    #add_cxx_compiler_flag(-Wzero-as-null-pointer-constant)
   endif()
   if (HAVE_CXX_FLAG_FSTRICT_ALIASING)
     add_cxx_compiler_flag(-Wstrict-aliasing)
@@ -156,14 +156,14 @@ endif(BENCHMARK_USE_LIBCXX)
 
 # C++ feature checks
 # Determine the correct regular expression engine to use
-cxx_feature_check(STD_REGEX)
-cxx_feature_check(GNU_POSIX_REGEX)
-cxx_feature_check(POSIX_REGEX)
+#cxx_feature_check(STD_REGEX)
+#cxx_feature_check(GNU_POSIX_REGEX)
+#cxx_feature_check(POSIX_REGEX)
 if(NOT HAVE_STD_REGEX AND NOT HAVE_GNU_POSIX_REGEX AND NOT HAVE_POSIX_REGEX)
-  message(FATAL_ERROR "Failed to determine the source files for the regular expression backend")
+  message(WARNING "Failed to determine the source files for the regular expression backend")
 endif()
 
-cxx_feature_check(STEADY_CLOCK)
+#cxx_feature_check(STEADY_CLOCK)
 # Ensure we have pthreads
 find_package(Threads REQUIRED)
 
